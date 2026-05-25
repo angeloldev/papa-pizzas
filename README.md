@@ -59,8 +59,6 @@ python -m app.seed               # cria banco e insere admins iniciais
 uvicorn app.main:app --reload
 ```
 
-Acesse a documentação interativa em: http://localhost:8000/docs
-
 ### Frontend
 
 ```bash
@@ -69,8 +67,6 @@ pnpm install
 cp .env.example .env             # ajuste VITE_API_URL e VITE_WHATSAPP_NUMBER
 pnpm dev
 ```
-
-Acesse: http://localhost:5173
 
 ## Estrutura do projeto
 
@@ -113,4 +109,4 @@ papa_pizzas/
 
 ## Licença
 
-Projeto sem fins lucrativos desenvolvido para uso interno do JMJ Brasília.
+Projeto sem fins lucrativos desenvolvido para uso interno da PAPA PIZZAS Brasília.
