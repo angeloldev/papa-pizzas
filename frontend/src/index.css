@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta Papa Pizzas */
+  --color-vermelho: #C60C30;
+  --color-azul: #0047A0;
+  --color-amarelo: #FFD100;
+
+  /* Fontes */
+  --font-display: "Baloo 2", cursive;
+  --font-body: "Montserrat", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}

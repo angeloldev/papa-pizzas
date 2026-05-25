@@ -1,0 +1,28 @@
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+**/__pycache__/
+**/*.pyc
+backend/*.db
+backend/*.sqlite3
+backend/*.db-shm
+backend/*.db-wal
+backend/.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# OS / IDE
+.DS_Store
+.claude/
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Misc
+summary.txt
