@@ -1,13 +1,23 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./papa_pizzas.db"
+# Em produção (Railway), DATABASE_URL aponta para o PostgreSQL provisionado.
+# Em desenvolvimento local, usamos SQLite.
+SQLALCHEMY_DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///./papa_pizzas.db",
+)
+
+# PostgreSQL enviado pelo Railway às vezes usa o prefixo legado "postgres://"
+# mas o SQLAlchemy 2.x exige "postgresql://". Corrigimos automaticamente.
+if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # connect_args é necessário apenas para SQLite (permite múltiplas threads)
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
+connect_args = {"check_same_thread": False} if SQLALCHEMY_DATABASE_URL.startswith("sqlite") else {}
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args=connect_args)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
