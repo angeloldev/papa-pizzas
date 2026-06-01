@@ -17,7 +17,11 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401 && window.location.pathname.startsWith("/admin")) {
+    if (
+      err.response?.status === 401 &&
+      window.location.pathname.startsWith("/admin") &&
+      !window.location.pathname.startsWith("/admin/login")
+    ) {
       localStorage.removeItem("papa_token");
       localStorage.removeItem("papa_admin_nome");
       window.location.href = "/admin/login";
