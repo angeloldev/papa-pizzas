@@ -33,8 +33,9 @@ export default function CheckoutPix({ pedido, onNovoPedido }: Props) {
     const numero = import.meta.env.VITE_WHATSAPP_NUMBER ?? "";
     const linhas = [
       `Olá! Sou *${pedido.nome_cliente}* e acabei de fazer o pedido *${pedido.numero_pedido}*.`,
-      `📅 Retirada: ${formatarData(pedido.data_retirada)}`,
-      `💰 Valor: R$ ${pedido.valor_total.toFixed(2).replace(".", ",")}`,
+      `- Itens: ${pedido.itens}`,
+      `- Retirada: ${formatarData(pedido.data_retirada)}`,
+      `- Valor: R$ ${pedido.valor_total.toFixed(2).replace(".", ",")}`,
       pedido.telefone ? `📞 Meu telefone: ${pedido.telefone}` : "",
       "",
       ehPix ? `Segue o comprovante de pagamento! 🍕` : `Vou pagar na retirada. 🍕`,
