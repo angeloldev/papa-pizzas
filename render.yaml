@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: papa-pizzas-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.6
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: PIX_CHAVE
+        sync: false
+      - key: PIX_NOME_BENEFICIARIO
+        sync: false
+      - key: PIX_CIDADE
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://www.papapizzas.com.br,https://papapizzas.com.br,http://localhost:5173

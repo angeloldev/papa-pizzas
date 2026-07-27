@@ -18,7 +18,7 @@ target_metadata = Base.metadata
 
 
 def get_url() -> str:
-    # Em produção (Railway), DATABASE_URL vem como variável de ambiente.
+    # Em produção (Render), DATABASE_URL vem como variável de ambiente.
     # Em desenvolvimento local, usamos o SQLite padrão.
     return os.environ.get(
         "DATABASE_URL",

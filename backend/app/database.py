@@ -2,14 +2,14 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-# Em produção (Railway), DATABASE_URL aponta para o PostgreSQL provisionado.
+# Em produção (Render), DATABASE_URL aponta para o PostgreSQL gerenciado (Neon/Supabase).
 # Em desenvolvimento local, usamos SQLite.
 SQLALCHEMY_DATABASE_URL = os.environ.get(
     "DATABASE_URL",
     "sqlite:///./papa_pizzas.db",
 )
 
-# PostgreSQL enviado pelo Railway às vezes usa o prefixo legado "postgres://"
+# Alguns provedores (Render, Heroku, Railway) enviam o prefixo legado "postgres://"
 # mas o SQLAlchemy 2.x exige "postgresql://". Corrigimos automaticamente.
 if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
     SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)

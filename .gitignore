@@ -26,3 +26,5 @@ frontend/.env.local
 
 # Misc
 summary.txt
+.vercel
+.env*
